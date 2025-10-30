@@ -21,13 +21,13 @@
 -- 2	1
 
 --Solution:
-with temp as (
-select user_id, count(distinct tweet_id) as tweet_bucket, count(distinct user_id) as users_num
+with cte as 
+(select user_id, count(distinct tweet_id) as tweet_bucket
 from tweets
 where year(tweet_date) = 2022
-group by user_id
-)
+group by user_id)
 
-select tweet_bucket, users_num
-from temp 
+select tweet_bucket, count(user_id) as users_num
+from cte
 group by tweet_bucket
+order by tweet_bucket
