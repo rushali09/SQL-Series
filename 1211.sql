@@ -1,5 +1,5 @@
-# query rating < 3 = poor query 
-# query = query rating/ position
+-- # query rating < 3 = poor query 
+-- # query = query rating/ position
 # 1211. Queries Quality and Percentage
 select  query_name, 
         round(sum(rating/position)/ count(*),2) as quality,
